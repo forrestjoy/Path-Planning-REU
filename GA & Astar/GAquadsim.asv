@@ -24,7 +24,7 @@ map = double(imbinarize(J));
 % %Start and Goal
 %  source = [10, 20];
 %  goal   = [490, 490];
-source = [2, 2];
+source = [0, 0];
 goal   = [15,15];
 
 % %Nodes
@@ -40,7 +40,7 @@ view(2)
 hold all
 plot(source(1),source(2),'s','MarkerFaceColor','m');
 plot(goal(1),goal(2),'s','MarkerFaceColor','m');
-
+% waitforbuttonpress;
 %-------------------------------------------------------------------
 % no. of points that represent a candidate path, excluding 
 % the source and goal. each point marks a robot turn.
@@ -170,6 +170,9 @@ controller.LookaheadDistance = 0.5;
 %Defining the minToGoal and the distanceToGoal and controllRate
 minToGoal = 0.75;
 distanceToGoal = norm(uavPose(1:2) - endpoint);
+% controlRate = robotics.Rate(10);
+% fprintf('I"M HERE YO')
+%Controller loop to follow waypoints
 while(distanceToGoal > minToGoal)
     
     %calculating linear and angular velocity of uav from controller object
